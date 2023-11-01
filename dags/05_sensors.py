@@ -33,7 +33,10 @@ with DAG(
         endpoint='/get',
         method='GET',
         http_conn_id='http_httpbin',
-        response_check=lambda response: response.status_code == 200
+        response_check=lambda response: response.status_code == 200,
+        mode='poke', 
+        timeout=300, 
+        poke_interval=60,
     )
 
     t_email = EmailOperator(

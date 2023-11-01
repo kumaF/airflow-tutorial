@@ -32,7 +32,8 @@ with DAG(
         task_id='t_ping',
         endpoint='/post',
         method='POST',
-        http_conn_id='http_httpbin'
+        http_conn_id='http_httpbin',
+        response_check=lambda response: response.status_code == 200
     )
 
     t_email = EmailOperator(
